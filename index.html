@@ -1,197 +1,26 @@
-<!DOCTYPE html>
-<html>
+<DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  min-width: 250px;
-}
-
-/* Include the padding and border in an element's total width and height */
-* {
-  box-sizing: border-box;
-}
-
-/* Remove margins and padding from the list */
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-/* Style the list items */
-ul li {
-  cursor: pointer;
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  list-style-type: none;
-  background: #eee;
-  font-size: 18px;
-  transition: 0.2s;
-  
-  /* make the list items unselectable */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
-  background: #f9f9f9;
-}
-
-/* Darker background-color on hover */
-ul li:hover {
-  background: #ddd;
-}
-
-/* When clicked on, add a background color and strike out text */
-ul li.checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-}
-
-/* Add a "checked" mark when clicked on */
-ul li.checked::before {
-  content: '';
-  position: absolute;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 7px;
-}
-
-/* Style the close button */
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px 16px 12px 16px;
-}
-
-.close:hover {
-  background-color: #f44336;
-  color: white;
-}
-
-/* Style the header */
-.header {
-  background-color: #f44336;
-  padding: 30px 40px;
-  color: white;
-  text-align: center;
-}
-
-/* Clear floats after the header */
-.header:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Style the input */
-input {
-  margin: 0;
-  border: none;
-  border-radius: 0;
-  width: 75%;
-  padding: 10px;
-  float: left;
-  font-size: 16px;
-}
-
-/* Style the "Add" button */
-.addBtn {
-  padding: 10px;
-  width: 25%;
-  background: #d9d9d9;
-  color: #555;
-  float: left;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  border-radius: 0;
-}
-
-.addBtn:hover {
-  background-color: #bbb;
-}
-</style>
+    <title>link maker</title>
 </head>
 <body>
+    <a id="link" target="_blank">Click ctrl+r to look up 30 random sequences of letters at once, or click this link to open up one tab. If it doesn't work, then make sure that pop-ups are allowed!</a>
+    <p>When you use this, it will open up 30 tabs at once, all with a random search in which every letter of the alphabet is shuffles. I would list all the possible options for you, but there are 3628800, or 3 billion six hundred twenty eight thousand eight hundred. Here's a couple examples below:<br>i,l,p,v,t,m,c,j,e,r,a,z,g,x,s,y,u,f,d,b,w,h,q,n,k,o<br>d,p,l,t,c,f,e,m,q,w,h,r,j,v,y,u,k,g,z,n,i,b,a,x,s,o<br>y,s,p,o,w,v,g,m,x,q,u,a,l,h,e,r,b,j,d,n,z,f,c,i,t,k<br>Thiscan be used to open 30 tabs on bing and get paid 15 cents by only clicking a couple buttons.<br>You may be worried that it will do two of the same tab, and then bing won't pay you as much, and you'll have to do this again. Don't worry. The chances of that happening are 1/13168189440000. And if you have lived for enough days to get to that, then you're 36 billion years old, and have gotten over 5 trillion dollars through this method. So if you have gotten that much, and you're somehow that old, it's safe to say that half of a cent won't matter, nore will a billion dallars. Have fun!</p>
+    <script>
+        var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+            }
+            return array;
+        }
+        for(x=0; x<30; x++){
+        var question = shuffle(letters)
+        var link_template = "https://www.bing.com/search?q=" + question + "&form=QBLH&sp=-1&lq=0&pq=" + question + "&sc=11-7&qs=n&sk=&cvid=50226936339A4B56B2B9E8FEC5E3AA52&ghsh=0&ghacc=0&ghpl="
+        document.getElementById("link").setAttribute("href", link_template);
+        document.getElementById("link").click()}
 
-<div id="myDIV" class="header">
-  <h2 style="margin:5px">My To Do List</h2>
-  <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
-</div>
-
-<ul id="myUL">
-</ul>
-
-<script>
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
-
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-</script>
+    </script>
 </body>
 </html>
