@@ -1,13 +1,18 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>link maker</title>
+    <title>Link Maker</title>
 </head>
 <body>
-    <a id="link" target="_blank">AAAAAAAAAAAAAHHHHHHHHHH</a>
+    <a id="link" target="_blank">Click Me!</a>
     <script>
-        document.getElementById("link").setAttribute("href", "leoduri34.github.io");
-        setTimeout(function(){for(let i=0; i<2, i++){document.getElementById("link").click()}}, 1000)
+        document.getElementById("link").setAttribute("href", "https://leoduri34.github.io");
+
+        setTimeout(function() {
+            for (let i = 0; i < 2; i++) {
+                document.getElementById("link").click();
+            }
+        }, 1000);
     </script>
 </body>
 </html>
