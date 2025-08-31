@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Link Maker</title>
+    <title>Block free</title>
 </head>
 <body>
-    <a id="link" target="_blank">Click Me!</a>
+    <input id="input">
+    <iframe id="frame">
     <script>
-        document.getElementById("link").setAttribute("href", "https://leoduri34.github.io");
-
-        setTimeout(function() {
-            for (let i = 0; i < 20; i++) {
-                document.getElementById("link").click();
-                alert("3 Days until Super Mario Steals Your Liver!")
-            }
-        }, 1);
-        
+        document.getElementById("frame").setAttribute("src", document.getElementById("input").value())
     </script>
 </body>
 </html>
+
